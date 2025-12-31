@@ -1,10 +1,20 @@
 package com.springboot.demo;
 
+import com.alibaba.fastjson2.JSONObject;
+import com.springboot.demo.model.bean.account.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 2020/4/26 15:09
@@ -15,8 +25,19 @@ public class DemoTest {
 
     @Test
     public void test1() {
-        String join = String.join(",", "2", "3");
-        System.out.println(join);
+        String uri = "http://localhost:8868/test1";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("password","123456");
+        User user = new User();
+        user.setPassword("123456");
+
+        JSONObject block = WebClient.builder().build().get().uri("http://localhost:8868/test1",uriBuilder ->
+                        uriBuilder.queryParam("name","张三")
+                                .queryParam("apiToken","1222")
+                                .build())
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .retrieve().bodyToMono(JSONObject.class).block();
+        System.out.println(block);
     }
 
 

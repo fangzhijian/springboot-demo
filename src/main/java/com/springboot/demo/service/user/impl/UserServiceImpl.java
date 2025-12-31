@@ -16,13 +16,15 @@ import com.springboot.demo.model.param.user.UserInsertParam;
 import com.springboot.demo.service.user.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
@@ -36,6 +38,8 @@ import java.util.List;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     private final UserToken userToken;
+
+    private final static AtomicInteger atomicInteger = new AtomicInteger(0);
 
     /**
      * 创建账号
@@ -213,18 +217,26 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * 测试
      */
     @Override
-    @Async
     @Transactional
     public void test() {
-        try {
-            Thread.sleep(2000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         System.out.println("test");
-        User user = User.builder().id(1L).name("牛大壮").build();
+        User user = User.builder().id(1L).name("牛大壮"+atomicInteger.getAndIncrement()).build();
         this.updateById(user);
-        System.out.println(10/0);
+        if (TransactionSynchronizationManager.isActualTransactionActive()) {
+            System.out.println("isActualTransactionActive");
+            TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
+                @Override
+                public void afterCommit() {
+                    System.out.println("afterCommit");
+                }
+
+                @Override
+                public void beforeCommit(boolean readOnly) {
+                    System.out.println("beforeCommit");
+                    System.out.println(10/0);
+                }
+            });
+        }
     }
 
 
