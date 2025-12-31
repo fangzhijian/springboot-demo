@@ -1,6 +1,6 @@
 package com.springboot.demo.service;
 
-import com.springboot.demo.model.TestData;
+import com.springboot.demo.model.po.TestData;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

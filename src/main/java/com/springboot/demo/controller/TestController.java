@@ -1,7 +1,9 @@
 package com.springboot.demo.controller;
 
-import com.springboot.demo.model.bean.account.User;
+import com.springboot.demo.model.convert.UserConvert;
+import com.springboot.demo.model.po.user.User;
 import com.springboot.demo.model.json.XBaseAiJson;
+import com.springboot.demo.model.vo.user.UserVo;
 import com.springboot.demo.service.user.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,8 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -55,9 +55,10 @@ public class TestController {
         userService.test();
         System.out.println("is end");
     }
+
     @GetMapping("test1")
-    public User test1(User user) {
-        user.setPhone("1234567890");
-        return user;
+    public UserVo test1(User user) {
+        user = userService.getById(user.getId());
+        return UserConvert.INSTANCE.poToVo(user);
     }
 }

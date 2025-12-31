@@ -1,20 +1,12 @@
 package com.springboot.demo;
 
 import com.alibaba.fastjson2.JSONObject;
-import com.springboot.demo.model.bean.account.User;
+import com.springboot.demo.model.po.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 2020/4/26 15:09

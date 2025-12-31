@@ -1,7 +1,7 @@
 package com.springboot.demo.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.springboot.demo.model.TestData;
+import com.springboot.demo.model.po.TestData;
 import com.springboot.demo.service.TestDataService;
 import com.springboot.demo.mapper.TestDataMapper;
 import lombok.extern.slf4j.Slf4j;

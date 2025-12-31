@@ -1,29 +1,19 @@
-package com.springboot.demo.model.bean.account;
+package com.springboot.demo.model.vo.user;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
- * 2020/1/15 10:49
- * fzj
+ * {@code @description} 用户VO
+ *
+ * @author fangzhijian
+ * @since 2025-12-31 11:36
  */
 @Data
-@TableName(value = "users")
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class User implements Serializable {
+public class UserVo implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -31,7 +21,6 @@ public class User implements Serializable {
     /**
      * 主键id
      */
-    @TableId(type = IdType.AUTO)
     private Long id;
     /**
      * 姓名
@@ -69,12 +58,4 @@ public class User implements Serializable {
      * 更新时间
      */
     private LocalDateTime updateTime;
-
-    /**
-     * 权限合集
-     */
-    @TableField(exist = false)
-    private List<Integer> roleIds;      //指定权限集合
-
-
 }

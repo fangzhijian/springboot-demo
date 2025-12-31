@@ -1,6 +1,6 @@
 package com.springboot.demo.model.param.user;
 
-import com.springboot.demo.model.bean.account.UserRole;
+import com.springboot.demo.model.po.user.UserRole;
 import lombok.Data;
 
 import java.io.Serial;

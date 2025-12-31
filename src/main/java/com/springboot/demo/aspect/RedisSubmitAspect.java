@@ -6,7 +6,7 @@ import cn.hutool.core.util.StrUtil;
 import com.springboot.demo.annotation.RedisSubmit;
 import com.springboot.demo.exception.BusinessException;
 import com.springboot.demo.intercepter.UserToken;
-import com.springboot.demo.model.bean.account.User;
+import com.springboot.demo.model.po.user.User;
 import com.springboot.demo.until.SpeLUtil;
 import jakarta.annotation.Resource;
 import org.aspectj.lang.ProceedingJoinPoint;

@@ -3,7 +3,7 @@ package com.springboot.demo.service.user;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.springboot.demo.exception.BusinessException;
-import com.springboot.demo.model.bean.account.User;
+import com.springboot.demo.model.po.user.User;
 import com.springboot.demo.model.json.ResponseJson;
 import com.springboot.demo.model.param.user.UserInsertParam;
 

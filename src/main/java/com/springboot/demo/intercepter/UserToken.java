@@ -1,7 +1,7 @@
 package com.springboot.demo.intercepter;
 
 import com.springboot.demo.constant.RedisConstants;
-import com.springboot.demo.model.bean.account.User;
+import com.springboot.demo.model.po.user.User;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 

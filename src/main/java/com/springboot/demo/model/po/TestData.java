@@ -1,4 +1,4 @@
-package com.springboot.demo.model;
+package com.springboot.demo.model.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

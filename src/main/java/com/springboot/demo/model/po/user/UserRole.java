@@ -1,4 +1,4 @@
-package com.springboot.demo.model.bean.account;
+package com.springboot.demo.model.po.user;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

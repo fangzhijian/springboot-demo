@@ -1,7 +1,7 @@
 package com.springboot.demo.mapper.user;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.springboot.demo.model.bean.account.User;
+import com.springboot.demo.model.po.user.User;
 
 
 
