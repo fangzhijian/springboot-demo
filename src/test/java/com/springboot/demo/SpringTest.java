@@ -8,6 +8,7 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.List;
 
@@ -21,13 +22,14 @@ public class SpringTest {
 
     @Resource
     private TestDataService testDataService;
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
+
     @Test
     public void test() {
-        TestData testData = new TestData();
-        testData.setItems(List.of("a","e","f"));
-        testDataService.save(testData);
-        TestData byId = testDataService.getById(testData.getId());
-        System.out.println(JSON.toJSONString(byId));
+        redisTemplate.opsForValue().set("test", "abc");
+        Object test = redisTemplate.opsForValue().get("test");
+        System.out.println(test);
     }
 
 }
